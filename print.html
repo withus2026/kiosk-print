@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kiosk Print Test</title>
+<style>
+  @page { size: 4in 6in; margin: 0; }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #eee;
+    font-family: Arial, "Noto Sans KR", sans-serif;
+  }
+  .card {
+    width: 4in;
+    height: 6in;
+    margin: 20px auto;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid #ddd;
+  }
+  h1 { font-size: 28px; margin: 0 0 14px; }
+  p { font-size: 16px; line-height: 1.6; margin: 3px 0; }
+  .screen-only {
+    width: 4in;
+    margin: 0 auto 30px;
+    text-align: center;
+  }
+  button {
+    font-size: 18px;
+    padding: 14px 28px;
+    cursor: pointer;
+  }
+  @media print {
+    html, body { background: white; width: 4in; height: 6in; }
+    .card { margin: 0; border: 0; }
+    .screen-only { display: none; }
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1>PRINT TEST</h1>
+    <p>키오스크 출력 테스트</p>
+    <p>2026</p>
+  </div>
+
+  <div class="screen-only">
+    <button onclick="window.print()">인쇄 테스트</button>
+  </div>
+
+<script>
+  // Smore 링크에서 이 페이지가 열리면 자동으로 인쇄창을 호출합니다.
+  window.addEventListener("load", function () {
+    setTimeout(function () {
+      window.print();
+    }, 700);
+  });
+</script>
+</body>
+</html>
